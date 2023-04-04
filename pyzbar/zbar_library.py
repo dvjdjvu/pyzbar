@@ -58,6 +58,10 @@ def load():
             dependencies, libzbar = load_objects(Path(''))
         except OSError:
             dependencies, libzbar = load_objects(Path(__file__).parent)
+            
+    elif 'Darwin' == platform.system():
+        libzbar = cdll.LoadLibrary('libs/libzbar.a')
+        dependencies = []
     else:
         # Assume a shared library on the path
         path = find_library('zbar')
