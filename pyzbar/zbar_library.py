@@ -60,6 +60,7 @@ def load():
             dependencies, libzbar = load_objects(Path(__file__).parent)
             
     elif 'Darwin' == platform.system():
+        print("@@@@@ Hello ))")
         libzbar = cdll.LoadLibrary('libs/libzbar.a')
         dependencies = []
     else:
