@@ -3,7 +3,7 @@
 import platform
 import sys
 
-from ctypes import cdll
+from ctypes import cdll, CDLL
 from ctypes.util import find_library
 from pathlib import Path
 
@@ -60,8 +60,7 @@ def load():
             dependencies, libzbar = load_objects(Path(__file__).parent)
             
     elif 'Darwin' == platform.system():
-        print("@@@@@ Hello ))")
-        libzbar = cdll.LoadLibrary('libs/libzbar.a')
+        libzbar = CDLL('libs/libzbar.a')
         dependencies = []
     else:
         # Assume a shared library on the path
